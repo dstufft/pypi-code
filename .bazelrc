@@ -18,6 +18,28 @@
 #       appears to work as expected.
 # common --enable_bzlmod
 
+# Change our defaults to build optimized binaries rather than focusing on
+# building fast.
+#
+# This repository mostly focuses on code that doesn't need to be compiled, like
+# Python code, and the compiled code we do have is things that change rarely.
+# This means that our compilation speed doesn't really affect our dev loop much,
+# and defaulting to our "production" settings will make dev and prod match more
+# closely.
+build --compilation_mode opt
+
+# We want to build targeting x86-64-v2 rather than the default of x86-64(-v1).
+#
+# This mostly just controls what CPU features the compiled code can take
+# advantage of. The default of x86-64-v1 means that no additional features can
+# be used that aren't part of the original x86-64 spec.
+#
+# x86-64-v2 unlocks things like SSE3 and SSE4, and supports CPUs produced back
+# to 2009.
+#
+# For more levels, check out https://en.wikipedia.org/wiki/X86-64#Microarchitecture_levels
+build --copt=-march=x86_64_v2
+
 # Ensure that tags applied in your BUILD file, like tags = ["no-remote"] get
 # propagated to actions created by the rule. Without this option, you rely on
 # rules authors to manually check the tags you passed and apply relevant ones to
