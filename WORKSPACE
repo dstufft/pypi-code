@@ -129,7 +129,7 @@ libffi_repositories()
 python_repositories()
 
 # Register Python toolchains
-register_toolchains("@python//:python_toolchain")
+register_toolchains("@python//:toolchain")
 
 util_linux_repositories()
 
@@ -138,9 +138,9 @@ xz_repositories()
 zlib_repositories()
 
 # 5. Declarations for indirect dependencies.
-load("//:third_party/python/deps.bzl", python_dependencies = "dependencies")
 load("@rules_foreign_cc//foreign_cc:repositories.bzl", "rules_foreign_cc_dependencies")
+load("@rules_python//python:repositories.bzl", rules_python_dependencies = "py_repositories")
 
 rules_foreign_cc_dependencies()
 
-python_dependencies()
+rules_python_dependencies()
