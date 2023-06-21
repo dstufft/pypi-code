@@ -1,0 +1,85 @@
+diff --git a/setup.py b/setup.py
+index 4f122b62e0..1665f86b76 100644
+--- a/setup.py
++++ b/setup.py
+@@ -701,10 +701,10 @@ def add_multiarch_paths(self):
+             os.unlink(tmpfile)
+ 
+         if multiarch_path_component != '':
+-            add_dir_to_list(self.compiler.library_dirs,
+-                            '/usr/lib/' + multiarch_path_component)
+-            add_dir_to_list(self.compiler.include_dirs,
+-                            '/usr/include/' + multiarch_path_component)
++            # add_dir_to_list(self.compiler.library_dirs,
++            #                 '/usr/lib/' + multiarch_path_component)
++            # add_dir_to_list(self.compiler.include_dirs,
++            #                 '/usr/include/' + multiarch_path_component)
+             return
+ 
+         if not find_executable('dpkg-architecture'):
+@@ -722,10 +722,10 @@ def add_multiarch_paths(self):
+             if ret == 0:
+                 with open(tmpfile) as fp:
+                     multiarch_path_component = fp.readline().strip()
+-                add_dir_to_list(self.compiler.library_dirs,
+-                                '/usr/lib/' + multiarch_path_component)
+-                add_dir_to_list(self.compiler.include_dirs,
+-                                '/usr/include/' + multiarch_path_component)
++                # add_dir_to_list(self.compiler.library_dirs,
++                #                 '/usr/lib/' + multiarch_path_component)
++                # add_dir_to_list(self.compiler.include_dirs,
++                #                 '/usr/include/' + multiarch_path_component)
+         finally:
+             os.unlink(tmpfile)
+ 
+@@ -847,8 +847,9 @@ def configure_compiler(self):
+         # directories (i.e. '.' and 'Include') must be first.  See issue
+         # 10520.
+         if not CROSS_COMPILING:
+-            add_dir_to_list(self.compiler.library_dirs, '/usr/local/lib')
+-            add_dir_to_list(self.compiler.include_dirs, '/usr/local/include')
++            # add_dir_to_list(self.compiler.library_dirs, '/usr/local/lib')
++            # add_dir_to_list(self.compiler.include_dirs, '/usr/local/include')
++            pass
+         # only change this for cross builds for 3.3, issues on Mageia
+         if CROSS_COMPILING:
+             self.add_cross_compiling_paths()
+@@ -868,8 +869,10 @@ def init_inc_lib_dirs(self):
+             add_dir_to_list(self.compiler.include_dirs,
+                             sysconfig.get_config_var("INCLUDEDIR"))
+ 
+-        system_lib_dirs = ['/lib64', '/usr/lib64', '/lib', '/usr/lib']
+-        system_include_dirs = ['/usr/include']
++        # system_lib_dirs = ['/lib64', '/usr/lib64', '/lib', '/usr/lib']
++        # system_include_dirs = ['/usr/include']
++        system_lib_dirs = []
++        system_include_dirs = []
+         # lib_dirs and inc_dirs are used to search for files;
+         # if a file is found in one of those directories, it can
+         # be assumed that no additional -I,-L directives are needed.
+@@ -892,11 +895,13 @@ def init_inc_lib_dirs(self):
+ 
+         # OSF/1 and Unixware have some stuff in /usr/ccs/lib (like -ldb)
+         if HOST_PLATFORM in ['osf1', 'unixware7', 'openunix8']:
+-            self.lib_dirs += ['/usr/ccs/lib']
++            # self.lib_dirs += ['/usr/ccs/lib']
++            pass
+ 
+         # HP-UX11iv3 keeps files in lib/hpux folders.
+         if HOST_PLATFORM == 'hp-ux11':
+-            self.lib_dirs += ['/usr/lib/hpux64', '/usr/lib/hpux32']
++            # self.lib_dirs += ['/usr/lib/hpux64', '/usr/lib/hpux32']
++            pass
+ 
+         if MACOS:
+             # This should work on any unixy platform ;-)
+@@ -1125,7 +1130,8 @@ def detect_readline_curses(self):
+         if curses_library == 'ncursesw':
+             curses_defines.append(('HAVE_NCURSESW', '1'))
+             if not CROSS_COMPILING:
+-                curses_includes.append('/usr/include/ncursesw')
++                # curses_includes.append('/usr/include/ncursesw')
++                pass
+             # Bug 1464056: If _curses.so links with ncursesw,
+             # _curses_panel.so must link with panelw.
+             panel_library = 'panelw'

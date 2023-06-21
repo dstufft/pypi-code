@@ -1,0 +1,115 @@
+# Enable Bzlmod so we can start using this new to 6.0 feature as it's the path
+# forward for Bazel
+# NOTE: Disabled because hermetic_cc_toolchain does not appear to be compatible
+#       with it. It appears like there are some people using it with bzlmod
+#       though, so it may be something wrong with rules_python, or a combination
+#       of the two.
+#
+#       This appears to be a problem with the host platform, when bzlmod is not
+#       enabled the host platform has the following constraints:
+#
+#           constraint_values = ["@platforms//cpu:x86_64", "@platforms//os:linux"]
+#
+#       However, when it is enabled, it has these constraints:
+#
+#           constraint_values = ["@platforms~0.0.4//cpu:x86_64", "@platforms~0.0.4//os:linux"]
+#
+#       Manually setting ``--host_platform @zig_sdk//platform:linux_amd64``
+#       appears to work as expected.
+# common --enable_bzlmod
+
+# Ensure that tags applied in your BUILD file, like tags = ["no-remote"] get
+# propagated to actions created by the rule. Without this option, you rely on
+# rules authors to manually check the tags you passed and apply relevant ones to
+# the actions they create.
+common --incompatible_allow_tags_propagation
+
+# Don't make the user wait for uploads, instead allow the bazel command to
+# complete and exit.
+#--bes_upload_mode=fully_async
+
+# Tell bazel not to try and detect the C/C++ toolchain from the host, instead it
+# will do nothing by default, which will allow us to register our own, hermetic
+# toolchain.
+build --incompatible_enable_cc_toolchain_resolution
+build --action_env BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN=1
+
+# Reduce clutter by putting all of our bazel symlinks inside of a .bazel directory
+build --symlink_prefix=.bazel/
+
+# Ensure that we don't accidentally make non-hermetic actions/tests which
+# depend on remote services. Tag an individual target with tags=["requires-network"]
+# to opt-out of the enforcement.
+build --sandbox_default_allow_network=false
+
+# Save time on Sandbox creation and deletion when many of the same kind of
+# action run during the build.
+build --experimental_reuse_sandbox_directories
+
+# Don't let environment variables like $PATH sneak into the build, which can
+# cause massive cache misses when they change.
+build --incompatible_strict_action_env
+
+# Some actions are always IO-intensive but require little compute. It's wasteful
+# to put the output in the remote cache, it just saturates the network and fills
+# the cache storage causing earlier evictions. It's also not worth sending them
+# for remote execution. For actions like PackageTar it's faster to just re-run
+# the work locally every time. We'll have to look at an execution log to figure
+# out which action mnemonics we care about.
+build --modify_execution_info=PackageTar=+no-remote
+
+# improve performance of sandbox by skipping the older my_repo/external/other_repo
+# symlinks.
+# NOTE: Some rules may fail under this flag.
+build --nolegacy_external_runfiles
+
+# Speed up all builds by not checking if output files have been modified. Also
+# lets you hack around the output tree for local debugging.
+build --noexperimental_check_output_files --noexperimental_check_external_repository_files
+
+# Fix the wrong default that comes from Google's internal monorepo by using __init__.py
+# to delimit a Python package
+build --incompatible_default_to_explicit_init_py
+
+# Improve remote cache checking speed by memorizing merkle tree calculations,
+# and tweak the amount of memory allocated to it
+# build --experimental_remote_merkle_tree_cache --experimental_remote_merkle_tree_cache_size=[XX]
+
+# If the grpc remote cache connection fails, it will fail the build, add this so
+# it falls back to the local cache.
+build --remote_local_fallback
+
+# Don't upload artifacts referenced in the BEP if the action can't be cached remotely.
+build --experimental_remote_build_event_upload=minimal
+
+# Compress cache blobs with zstd
+build --experimental_remote_cache_compression
+
+# Reduce the payload size of the uploaded build event stream by eliminating
+# duplicate file references.
+build --nolegacy_important_outputs
+
+# Provide more detailed timing profiles
+build --noslim_profile
+build --experimental_profile_include_target_label
+build --experimental_profile_include_primary_output
+
+# Fix a bug where Bazel didn't enable sandboxing for tests with tags=["exclusive"]
+test --incompatible_exclusive_test_sandboxed
+
+# Bazel's default for test_timeout is medium (5 min), but most tests should
+# instead be short (1 min)
+test --test_verbose_timeout_warnings
+
+# Change the behavior of bazel test to not bother building targets which aren't
+# dependencies of the tests.
+test --build_tests_only
+
+# Ensure that the Bazel server notices when a directory changes, if you have a
+# directory listed in the srcs of some target.
+startup --host_jvm_args=-DBAZEL_TRACK_SOURCE_DIRECTORIES=1
+
+# Allow developers to add repo-specific overrides in their own personal
+# .bazelrc.user file.
+# NOTE: Must be the last line
+try-import %workspace%/.user.bazelrc
