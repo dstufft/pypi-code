@@ -6,7 +6,7 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 def repositories():
     http_archive(
         name = "python",
-        build_file = "//:third_party/python/python.BUILD",
+        build_file = "//:third_party/python/BUILD.python.bazel",
         patch_args = ["-p1"],
         patches = [
             # Python used -Wl,-h but zig cc doesn't understand that, however, it

@@ -12,7 +12,7 @@ def repositories():
             # https://github.com/libffi/libffi/pull/764
             "//:third_party/libffi/patches/gh-764.patch",
         ],
-        build_file = "//:third_party/libffi/libffi.BUILD",
+        build_file = "//:third_party/libffi/BUILD.libffi.bazel",
         sha256 = "d66c56ad259a82cf2a9dfc408b32bf5da52371500b84745f7fb8b645712df676",
         strip_prefix = "libffi-3.4.4",
         urls = [
