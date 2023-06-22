@@ -87,24 +87,13 @@ http_archive(
 
 # Setup our zig repositories, which we use for creating a hermetic C/C++
 # toolchain and generate the needed toolchains.
-load("//:third_party/zig/repositories.bzl", zig_repositories = "repositories")
+load("//rules/zig:repositories.bzl", zig_repositories = "repositories")
 
 zig_repositories()
 
-load("//:third_party/zig/toolchains.bzl", zig_toolchains = "toolchains")
+load("//rules/zig:toolchains.bzl", zig_toolchains = "toolchains")
 
 zig_toolchains()
-
-# Register our zig provided toolchains, which will allow Bazel to select them
-# by default whenever they are needed.
-register_toolchains(
-    "@zig_sdk//toolchain:linux_amd64_gnu.2.28",
-    "@zig_sdk//toolchain:linux_arm64_gnu.2.28",
-    "@zig_sdk//toolchain:darwin_amd64",
-    "@zig_sdk//toolchain:darwin_arm64",
-    "@zig_sdk//toolchain:windows_amd64",
-    "@zig_sdk//toolchain:windows_arm64",
-)
 
 # Several of our third party dependencies do not use Bazel natively, and instead
 # use something like configure+make or CMake or similiar, so we'll load up
