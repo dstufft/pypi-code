@@ -84,26 +84,12 @@ http_archive(
 )
 
 # 4. Declarations for direct dependencies.
-
-# Setup our zig repositories, which we use for creating a hermetic C/C++
-# toolchain and generate the needed toolchains.
 load("//rules/zig:repositories.bzl", zig_repositories = "repositories")
-
-zig_repositories()
-
-load("//rules/zig:toolchains.bzl", zig_toolchains = "toolchains")
-
-zig_toolchains()
+load("//rules/zip:repositories.bzl", zip_repositories = "repositories")
 
 # Several of our third party dependencies do not use Bazel natively, and instead
 # use something like configure+make or CMake or similiar, so we'll load up
 # rules_foreign_cc to let Bazel call into those "foreign" build systems.
-# http_archive(
-#     name = "rules_foreign_cc",
-#     sha256 = "2a4d07cd64b0719b39a7c12218a3e507672b82a97b98c6a89d38565894cf7c51",
-#     strip_prefix = "rules_foreign_cc-0.9.0",
-#     url = "https://github.com/bazelbuild/rules_foreign_cc/archive/0.9.0.tar.gz",
-# )
 http_archive(
     name = "rules_foreign_cc",
     sha256 = "059d1d1ec0819b316d05eb7f9f0e07c5cf9636e0cbb224d445162f2d0690191e",
@@ -111,13 +97,18 @@ http_archive(
     url = "https://github.com/bazelbuild/rules_foreign_cc/archive/6ecc134b114f6e086537f5f0148d166467042226.tar.gz",
 )
 
-# We have a number of third party dependencies that we build, so load up their
-# repositories.
 load("//:third_party/libffi/repositories.bzl", libffi_repositories = "repositories")
 load("//:third_party/python/repositories.bzl", python_repositories = "repositories")
 load("//:third_party/util-linux/repositories.bzl", util_linux_repositories = "repositories")
 load("//:third_party/xz/repositories.bzl", xz_repositories = "repositories")
 load("//:third_party/zlib/repositories.bzl", zlib_repositories = "repositories")
+
+# Setup our zig repositories, which we use for creating a hermetic C/C++
+# toolchain and generate the needed toolchains.
+
+zig_repositories()
+
+zip_repositories()
 
 libffi_repositories()
 
@@ -131,6 +122,14 @@ util_linux_repositories()
 xz_repositories()
 
 zlib_repositories()
+
+# Register any toolchains that we've imported
+load("//rules/zig:toolchains.bzl", zig_toolchains = "toolchains")
+load("//rules/zip:toolchains.bzl", zip_toolchains = "toolchains")
+
+zig_toolchains()
+
+zip_toolchains()
 
 # 5. Declarations for indirect dependencies.
 load("@rules_foreign_cc//foreign_cc:repositories.bzl", "rules_foreign_cc_dependencies")
