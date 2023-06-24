@@ -1,13 +1,5 @@
 load("@rules_foreign_cc//foreign_cc:defs.bzl", "configure_make")
 
-filegroup(
-    name = "srcs",
-    srcs = glob(
-        include = ["**"],
-        exclude = ["*.bazel"],
-    ),
-)
-
 configure_make(
     name = "xz",
     configure_in_place = True,
@@ -23,7 +15,7 @@ configure_make(
         "--disable-doc",
     ],
     lib_name = "liblzma",
-    lib_source = ":srcs",
+    lib_source = "@upstream//:srcs",
     out_shared_libs = select({
         # "@platforms//os:windows": ["zlib.dll"],
         # "@platforms//os:osx": ["zlib.dylib"],

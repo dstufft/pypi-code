@@ -1,0 +1,11 @@
+"""
+"""
+
+module(name = "xz", version = "5.4.3")
+
+# Bazel Dependencies
+bazel_dep(name = "rules_foreign_cc", version = "0.9.0")
+
+# Upstream Dependencies
+deps = use_extension("@xz//:deps.bzl", "deps")
+use_repo(deps, "upstream")

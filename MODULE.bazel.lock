@@ -1,6 +1,6 @@
 {
   "lockFileVersion": 1,
-  "moduleFileHash": "4fd356804ed76a72c7512dcfd8cb974ba17ac6c76178d02ec201e877c5904899",
+  "moduleFileHash": "f18e7d78a1e066f2f16f56a85350e5fe890dc93206c42f81c1c1e6ed5e02d2f7",
   "flags": {
     "cmdRegistries": [
       "https://bcr.bazel.build/"
@@ -13,7 +13,8 @@
     "compatibilityMode": "ERROR"
   },
   "localOverrideHashes": {
-    "python": "762fc14fdaea1565202fa0704b86dfbd5d7eb77400a0d3c806ad6acd4ea9c207",
+    "python": "5e69ab5f533ce938233344c546773f9d3e7d743f8cdcc01339af0eff9f439697",
+    "xz": "924224c84c9fa36d9f323ba96e5024fbb6cf4c1e6449468899b92871ed2dc72c",
     "bazel_tools": "11c49407fdc54b48d69dcd4478440118124b9cd51b2dca5947a6414a585964a1"
   },
   "moduleDepGraph": {
@@ -200,7 +201,7 @@
           "usingModule": "python@_",
           "location": {
             "file": "python@_/MODULE.bazel",
-            "line": 15,
+            "line": 16,
             "column": 21
           },
           "imports": {
@@ -216,7 +217,8 @@
         "aspect_bazel_lib": "aspect_bazel_lib@1.32.1",
         "rules_foreign_cc": "rules_foreign_cc@_",
         "rules_python": "rules_python@0.23.1",
-        "zlib": "zlib@1.2.13.1"
+        "zlib": "zlib@1.2.13.1",
+        "xz": "xz@_"
       }
     },
     "rules_cc@0.0.2": {
@@ -655,6 +657,36 @@
         "bazel_skylib": "bazel_skylib@1.4.1",
         "platforms": "platforms@0.0.6",
         "rules_python": "rules_python@0.23.1"
+      }
+    },
+    "xz@_": {
+      "name": "xz",
+      "version": "5.4.3",
+      "key": "xz@_",
+      "repoName": "xz",
+      "executionPlatformsToRegister": [],
+      "toolchainsToRegister": [],
+      "extensionUsages": [
+        {
+          "extensionBzlFile": "@xz//:deps.bzl",
+          "extensionName": "deps",
+          "usingModule": "xz@_",
+          "location": {
+            "file": "xz@_/MODULE.bazel",
+            "line": 10,
+            "column": 21
+          },
+          "imports": {
+            "upstream": "upstream"
+          },
+          "devImports": [],
+          "tags": []
+        }
+      ],
+      "deps": {
+        "bazel_tools": "bazel_tools@_",
+        "local_config_platform": "local_config_platform@_",
+        "rules_foreign_cc": "rules_foreign_cc@_"
       }
     },
     "bazel_skylib@1.4.1": {

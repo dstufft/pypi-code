@@ -88,7 +88,6 @@ load("//rules/zig:repositories.bzl", zig_repositories = "repositories")
 load("//rules/zip:repositories.bzl", zip_repositories = "repositories")
 load("//:third_party/libffi/repositories.bzl", libffi_repositories = "repositories")
 load("//:third_party/util-linux/repositories.bzl", util_linux_repositories = "repositories")
-load("//:third_party/xz/repositories.bzl", xz_repositories = "repositories")
 
 # Setup our zig repositories, which we use for creating a hermetic C/C++
 # toolchain and generate the needed toolchains.
@@ -100,8 +99,6 @@ zip_repositories()
 libffi_repositories()
 
 util_linux_repositories()
-
-xz_repositories()
 
 # Register any toolchains that we've imported
 load("//rules/zig:toolchains.bzl", zig_toolchains = "toolchains")

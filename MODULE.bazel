@@ -12,6 +12,7 @@ register_toolchains("@python//:toolchain")
 
 # Local Overrides for Dependencies
 local_path_override(module_name = "python", path = "third_party/python")
+local_path_override(module_name = "xz", path = "third_party/xz")
 single_version_override(
     module_name = "zlib",
     registry = "https://raw.githubusercontent.com/dstufft/bazel-central-registry/7932ae9/",
