@@ -16,7 +16,7 @@
 #
 #       Manually setting ``--host_platform @zig_sdk//platform:linux_amd64``
 #       appears to work as expected.
-# common --enable_bzlmod
+common --enable_bzlmod
 
 # Change our defaults to build optimized binaries rather than focusing on
 # building fast.

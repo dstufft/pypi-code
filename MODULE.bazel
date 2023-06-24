@@ -1,0 +1,7 @@
+"""
+"""
+
+module(name = "pypi")
+
+# TODO: Remove once we're on Bazel 6.3.0
+bazel_dep(name = "platforms", version = "0.0.6")
