@@ -22,13 +22,6 @@ register_toolchains(
     "@zig_sdk//toolchain:windows_arm64",
 )
 
-http_archive(
-    name = "rules_python",
-    sha256 = "84aec9e21cc56fbc7f1335035a71c850d1b9b5cc6ff497306f84cced9a769841",
-    strip_prefix = "rules_python-0.23.1",
-    url = "https://github.com/bazelbuild/rules_python/releases/download/0.23.1/rules_python-0.23.1.tar.gz",
-)
-
 load("//rules/zip:repositories.bzl", zip_repositories = "repositories")
 load("//:third_party/util-linux/repositories.bzl", util_linux_repositories = "repositories")
 
@@ -41,7 +34,3 @@ load("//rules/zip:toolchains.bzl", zip_toolchains = "toolchains")
 zig_toolchains()
 
 zip_toolchains()
-
-load("@rules_python//python:repositories.bzl", rules_python_dependencies = "py_repositories")
-
-rules_python_dependencies()
