@@ -22,6 +22,8 @@ configure_make(
         # Somehow, it would have been remplaced in this library without quote,
         # so we'll add another macro to add the quotes.
         "CFLAGS='-Dredacted=\"redacted\"'",
+        # Use the editline library to supply readline
+        "--with-readline=editline",
         # TODO: Bring our own pip?
         "--with-ensurepip=install",
     ] + select({
@@ -49,8 +51,10 @@ rm $$INSTALLDIR$$/lib/libpython*.a
 """,
     deps = [
         "@bzip2//:bz2",
+        "@libedit",
         "@libffi",
         "@libuuid",
+        "@ncurses",
         "@xz",
         "@zlib",
     ],

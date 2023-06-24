@@ -1,6 +1,6 @@
 {
   "lockFileVersion": 1,
-  "moduleFileHash": "92c5e3e5f3b7c5a48d40482f6bed41f81d120eaa1bc3389a88cb7a1c60a68eb0",
+  "moduleFileHash": "8298ea1ab2c16a56acb04ff5dd0de36b377ed8236fbc1869a1b62b6f22c9b929",
   "flags": {
     "cmdRegistries": [
       "https://bcr.bazel.build/"
@@ -13,11 +13,13 @@
     "compatibilityMode": "ERROR"
   },
   "localOverrideHashes": {
-    "python": "c34dadeb7adbe70595501394bb1b6d66f6bbde8a86d0421f680f12b492d26f6e",
+    "python": "93e405a01d74e4e21231cabd9f232b4ecae6c2481b580ec9966113f9cdc47a81",
     "xz": "924224c84c9fa36d9f323ba96e5024fbb6cf4c1e6449468899b92871ed2dc72c",
     "libffi": "9ab26cb2bba232000eb4cee81ecf5359ba6a78cb70b560840962a44aa7a47728",
     "bazel_tools": "11c49407fdc54b48d69dcd4478440118124b9cd51b2dca5947a6414a585964a1",
-    "libuuid": "2f0f5257df1ba188ea7e72807be27803c2748ff91584eacabe0cfdaac82dae9e"
+    "libuuid": "2f0f5257df1ba188ea7e72807be27803c2748ff91584eacabe0cfdaac82dae9e",
+    "ncurses": "ad3649a162837e0f91bd45ce3a4e2fd5f4fd27932b7c2d65a55f6196a18ac1ed",
+    "libedit": "0a5e1acd8875881c1bf95d58f28a28743b8f6a4563193c3548aff37a27f984a3"
   },
   "moduleDepGraph": {
     "\u003croot\u003e": {
@@ -203,7 +205,7 @@
           "usingModule": "python@_",
           "location": {
             "file": "python@_/MODULE.bazel",
-            "line": 19,
+            "line": 23,
             "column": 21
           },
           "imports": {
@@ -221,6 +223,8 @@
         "rules_python": "rules_python@0.23.1",
         "zlib": "zlib@1.2.13.1",
         "xz": "xz@_",
+        "ncurses": "ncurses@_",
+        "libedit": "libedit@_",
         "libffi": "libffi@_",
         "libuuid": "libuuid@_",
         "bzip2": "bzip2@1.0.8"
@@ -692,6 +696,67 @@
         "bazel_tools": "bazel_tools@_",
         "local_config_platform": "local_config_platform@_",
         "rules_foreign_cc": "rules_foreign_cc@_"
+      }
+    },
+    "ncurses@_": {
+      "name": "ncurses",
+      "version": "6.4.20230617",
+      "key": "ncurses@_",
+      "repoName": "ncurses",
+      "executionPlatformsToRegister": [],
+      "toolchainsToRegister": [],
+      "extensionUsages": [
+        {
+          "extensionBzlFile": "@ncurses//:deps.bzl",
+          "extensionName": "deps",
+          "usingModule": "ncurses@_",
+          "location": {
+            "file": "ncurses@_/MODULE.bazel",
+            "line": 10,
+            "column": 21
+          },
+          "imports": {
+            "upstream": "upstream"
+          },
+          "devImports": [],
+          "tags": []
+        }
+      ],
+      "deps": {
+        "bazel_tools": "bazel_tools@_",
+        "local_config_platform": "local_config_platform@_",
+        "rules_foreign_cc": "rules_foreign_cc@_"
+      }
+    },
+    "libedit@_": {
+      "name": "libedit",
+      "version": "3.1",
+      "key": "libedit@_",
+      "repoName": "libedit",
+      "executionPlatformsToRegister": [],
+      "toolchainsToRegister": [],
+      "extensionUsages": [
+        {
+          "extensionBzlFile": "@libedit//:deps.bzl",
+          "extensionName": "deps",
+          "usingModule": "libedit@_",
+          "location": {
+            "file": "libedit@_/MODULE.bazel",
+            "line": 11,
+            "column": 21
+          },
+          "imports": {
+            "upstream": "upstream"
+          },
+          "devImports": [],
+          "tags": []
+        }
+      ],
+      "deps": {
+        "bazel_tools": "bazel_tools@_",
+        "local_config_platform": "local_config_platform@_",
+        "rules_foreign_cc": "rules_foreign_cc@_",
+        "ncurses": "ncurses@_"
       }
     },
     "libffi@_": {

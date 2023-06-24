@@ -1,0 +1,11 @@
+"""
+"""
+
+module(name = "ncurses", version = "6.4.20230617")
+
+# Bazel Dependencies
+bazel_dep(name = "rules_foreign_cc", version = "0.9.0")
+
+# Upstream Dependencies
+deps = use_extension("@ncurses//:deps.bzl", "deps")
+use_repo(deps, "upstream")

@@ -12,6 +12,8 @@ register_toolchains("@python//:toolchain")
 
 # Local Overrides for Dependencies
 local_path_override(module_name = "python", path = "third_party/python")
+local_path_override(module_name = "ncurses", path = "third_party/ncurses")
+local_path_override(module_name = "libedit", path = "third_party/libedit")
 local_path_override(module_name = "libuuid", path = "third_party/libuuid")
 local_path_override(module_name = "libffi", path = "third_party/libffi")
 local_path_override(module_name = "xz", path = "third_party/xz")
