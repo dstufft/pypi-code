@@ -86,22 +86,9 @@ http_archive(
 # 4. Declarations for direct dependencies.
 load("//rules/zig:repositories.bzl", zig_repositories = "repositories")
 load("//rules/zip:repositories.bzl", zip_repositories = "repositories")
-
-# Several of our third party dependencies do not use Bazel natively, and instead
-# use something like configure+make or CMake or similiar, so we'll load up
-# rules_foreign_cc to let Bazel call into those "foreign" build systems.
-http_archive(
-    name = "rules_foreign_cc",
-    sha256 = "059d1d1ec0819b316d05eb7f9f0e07c5cf9636e0cbb224d445162f2d0690191e",
-    strip_prefix = "rules_foreign_cc-6ecc134b114f6e086537f5f0148d166467042226",
-    url = "https://github.com/bazelbuild/rules_foreign_cc/archive/6ecc134b114f6e086537f5f0148d166467042226.tar.gz",
-)
-
 load("//:third_party/libffi/repositories.bzl", libffi_repositories = "repositories")
-load("//:third_party/python/repositories.bzl", python_repositories = "repositories")
 load("//:third_party/util-linux/repositories.bzl", util_linux_repositories = "repositories")
 load("//:third_party/xz/repositories.bzl", xz_repositories = "repositories")
-load("//:third_party/zlib/repositories.bzl", zlib_repositories = "repositories")
 
 # Setup our zig repositories, which we use for creating a hermetic C/C++
 # toolchain and generate the needed toolchains.
@@ -112,16 +99,9 @@ zip_repositories()
 
 libffi_repositories()
 
-python_repositories()
-
-# Register Python toolchains
-register_toolchains("@python//:toolchain")
-
 util_linux_repositories()
 
 xz_repositories()
-
-zlib_repositories()
 
 # Register any toolchains that we've imported
 load("//rules/zig:toolchains.bzl", zig_toolchains = "toolchains")
@@ -132,9 +112,6 @@ zig_toolchains()
 zip_toolchains()
 
 # 5. Declarations for indirect dependencies.
-load("@rules_foreign_cc//foreign_cc:repositories.bzl", "rules_foreign_cc_dependencies")
 load("@rules_python//python:repositories.bzl", rules_python_dependencies = "py_repositories")
-
-rules_foreign_cc_dependencies()
 
 rules_python_dependencies()

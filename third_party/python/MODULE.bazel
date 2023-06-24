@@ -1,0 +1,17 @@
+"""
+"""
+
+module(name = "python", version = "3.11.4")
+
+# Bazel Dependencies
+bazel_dep(name = "bazel_skylib", version = "1.4.2")
+bazel_dep(name = "aspect_bazel_lib", version = "1.32.1")
+bazel_dep(name = "rules_foreign_cc", version = "0.9.0")
+bazel_dep(name = "rules_python", version = "0.23.1")
+
+# C Library Dependencies
+bazel_dep(name = "zlib", version = "1.2.13.1")
+
+# Upstream Dependencies
+deps = use_extension("@python//:deps.bzl", "deps")
+use_repo(deps, "upstream")

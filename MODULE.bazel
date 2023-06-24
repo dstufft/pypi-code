@@ -3,5 +3,24 @@
 
 module(name = "pypi")
 
-# TODO: Remove once we're on Bazel 6.3.0
+# Dependencies
 bazel_dep(name = "platforms", version = "0.0.6")
+bazel_dep(name = "python", version = "3.11.4")
+
+# Toolchains
+register_toolchains("@python//:toolchain")
+
+# Local Overrides for Dependencies
+local_path_override(module_name = "python", path = "third_party/python")
+single_version_override(
+    module_name = "zlib",
+    registry = "https://raw.githubusercontent.com/dstufft/bazel-central-registry/7932ae9/",
+)
+archive_override(
+    module_name = "rules_foreign_cc",
+    urls = [
+        "https://github.com/bazelbuild/rules_foreign_cc/archive/6ecc134b114f6e086537f5f0148d166467042226.tar.gz",
+    ],
+    strip_prefix = "rules_foreign_cc-6ecc134b114f6e086537f5f0148d166467042226",
+    integrity = "sha256-BZ0dHsCBmzFtBet/nw4Hxc+WNuDLsiTURRYvLQaQGR4=",
+)

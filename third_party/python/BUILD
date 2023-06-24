@@ -1,17 +1,10 @@
+load("@aspect_bazel_lib//lib:output_files.bzl", "output_files")
 load("@rules_foreign_cc//foreign_cc:defs.bzl", "configure_make")
 load("@rules_python//python:defs.bzl", "py_runtime", "py_runtime_pair")
 
 config_setting(
     name = "optimized",
     values = {"compilation_mode": "opt"},
-)
-
-filegroup(
-    name = "srcs",
-    srcs = glob(
-        include = ["**"],
-        exclude = ["*.bazel"],
-    ),
 )
 
 # TODO: LTO?
@@ -31,41 +24,33 @@ configure_make(
         "CFLAGS='-Dredacted=\"redacted\"'",
         # TODO: Bring our own pip?
         "--with-ensurepip=install",
-        # We don't want our Python static linking
-        "--enable-shared",
-        "--without-static-libpython",
     ] + select({
         ":optimized": ["--enable-optimizations"],
         "//conditions:default": [],
     }),
-    env = {
-        "LDFLAGS_NODIST": "-Wl,-rpath,'\\$$\\$$ORIGIN/../lib/'",
-    },
+    # env = {
+    #     "LDFLAGS_NODIST": "-Wl,-rpath,'\\$$\\$$ORIGIN/../lib/'",
+    # },
     # rules_foreign_cc defaults the install_prefix to "python". This conflicts
     # with the "python" executable that is generated.
-    install_prefix = "py_install",
-    lib_source = ":srcs",
+    install_prefix = "bazel",
+    lib_source = "@upstream//:srcs",
     out_binaries = [
         "python3.orig",
     ],
     out_data_dirs = ["lib"],
-    out_shared_libs = select({
-        # "@platforms//os:windows": ["zlib.dll"],
-        # "@platforms//os:osx": ["zlib.dylib"],
-        "//conditions:default": [
-            "libpython3.so",
-            "libpython3.11.so",
-            "libpython3.11.so.1.0",
-        ],
-    }),
+    out_static_libs = [],
     # This is a hack, because these rules don't produce Bazel targets that are
     # marked executable, so what we do is we move the produced binary to a new
     # name, then we have a genrule that copies it to the new name.
-    postfix_script = "mv $$INSTALLDIR$$/bin/python3 $$INSTALLDIR$$/bin/python3.orig",
+    postfix_script = """
+mv $$INSTALLDIR$$/bin/python3 $$INSTALLDIR$$/bin/python3.orig
+rm $$INSTALLDIR$$/lib/libpython*.a
+""",
     deps = [
-        "@libffi",
-        "@util-linux",
-        "@xz",
+        # "@libffi",
+        # "@util-linux",
+        # "@xz",
         "@zlib",
     ],
 )
@@ -86,9 +71,18 @@ genrule(
     output_to_bindir = True,
 )
 
+output_files(
+    name = "files",
+    paths = [
+        "../python~override/python/lib",
+        "../python~override/python/include",
+    ],
+    target = ":python",
+)
+
 py_runtime(
     name = "python3_runtime",
-    files = [":python"],
+    files = [":files"],
     interpreter = ":interpreter",
     python_version = "PY3",
 )
