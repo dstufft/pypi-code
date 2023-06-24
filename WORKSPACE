@@ -31,6 +31,4 @@ util_linux_repositories()
 
 load("//rules/zip:toolchains.bzl", zip_toolchains = "toolchains")
 
-zig_toolchains()
-
 zip_toolchains()
