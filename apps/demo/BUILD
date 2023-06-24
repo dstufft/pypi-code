@@ -3,7 +3,7 @@
 load("//rules/python:defs.bzl", "py_binary")
 
 py_binary(
-    name = "main",
+    name = "demo",
     srcs = ["main.py"],
     # deps = [requirement("requests")],
 )
