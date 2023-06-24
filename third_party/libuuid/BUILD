@@ -1,15 +1,7 @@
 load("@rules_foreign_cc//foreign_cc:defs.bzl", "configure_make")
 
-filegroup(
-    name = "srcs",
-    srcs = glob(
-        include = ["**"],
-        exclude = ["*.bazel"],
-    ),
-)
-
 configure_make(
-    name = "util-linux",
+    name = "libuuid",
     configure_in_place = True,
     configure_options = [
         # We only need a few things from util-linux, so we'll disable everything
@@ -18,7 +10,7 @@ configure_make(
         # Turn on the things we actually want
         "--enable-libuuid",
     ],
-    lib_source = ":srcs",
+    lib_source = "@upstream//:srcs",
     out_shared_libs = select({
         # "@platforms//os:windows": ["zlib.dll"],
         # "@platforms//os:osx": ["zlib.dylib"],
@@ -28,13 +20,5 @@ configure_make(
             "libuuid.so.1.3.0",
         ],
     }),
-    out_static_libs = select({
-        # "@platforms//os:windows": ["zlib.dll"],
-        # "@platforms//os:osx": ["zlib.dylib"],
-        "//conditions:default": [
-            "libuuid.a",
-        ],
-    }),
     visibility = ["//visibility:public"],
-    # deps = ["@zlib"],
 )

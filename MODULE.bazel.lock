@@ -1,6 +1,6 @@
 {
   "lockFileVersion": 1,
-  "moduleFileHash": "9a0642183163bc9ea504be303e8bec8ce967587f54c0644f43721e9ec3a73584",
+  "moduleFileHash": "92c5e3e5f3b7c5a48d40482f6bed41f81d120eaa1bc3389a88cb7a1c60a68eb0",
   "flags": {
     "cmdRegistries": [
       "https://bcr.bazel.build/"
@@ -13,10 +13,11 @@
     "compatibilityMode": "ERROR"
   },
   "localOverrideHashes": {
-    "python": "c7f1426e00b944518d74137cb62cf07488bec3551e2a810a087371237a628580",
+    "python": "2d285b06b20fd7685d77b5cf0692b12c04af067e9b5d8eb9dede437b1bf73192",
     "xz": "924224c84c9fa36d9f323ba96e5024fbb6cf4c1e6449468899b92871ed2dc72c",
     "libffi": "9ab26cb2bba232000eb4cee81ecf5359ba6a78cb70b560840962a44aa7a47728",
-    "bazel_tools": "11c49407fdc54b48d69dcd4478440118124b9cd51b2dca5947a6414a585964a1"
+    "bazel_tools": "11c49407fdc54b48d69dcd4478440118124b9cd51b2dca5947a6414a585964a1",
+    "libuuid": "2f0f5257df1ba188ea7e72807be27803c2748ff91584eacabe0cfdaac82dae9e"
   },
   "moduleDepGraph": {
     "\u003croot\u003e": {
@@ -202,7 +203,7 @@
           "usingModule": "python@_",
           "location": {
             "file": "python@_/MODULE.bazel",
-            "line": 17,
+            "line": 18,
             "column": 21
           },
           "imports": {
@@ -220,7 +221,8 @@
         "rules_python": "rules_python@0.23.1",
         "zlib": "zlib@1.2.13.1",
         "xz": "xz@_",
-        "libffi": "libffi@_"
+        "libffi": "libffi@_",
+        "libuuid": "libuuid@_"
       }
     },
     "rules_cc@0.0.2": {
@@ -705,6 +707,36 @@
           "usingModule": "libffi@_",
           "location": {
             "file": "libffi@_/MODULE.bazel",
+            "line": 10,
+            "column": 21
+          },
+          "imports": {
+            "upstream": "upstream"
+          },
+          "devImports": [],
+          "tags": []
+        }
+      ],
+      "deps": {
+        "bazel_tools": "bazel_tools@_",
+        "local_config_platform": "local_config_platform@_",
+        "rules_foreign_cc": "rules_foreign_cc@_"
+      }
+    },
+    "libuuid@_": {
+      "name": "libuuid",
+      "version": "2.39",
+      "key": "libuuid@_",
+      "repoName": "libuuid",
+      "executionPlatformsToRegister": [],
+      "toolchainsToRegister": [],
+      "extensionUsages": [
+        {
+          "extensionBzlFile": "@libuuid//:deps.bzl",
+          "extensionName": "deps",
+          "usingModule": "libuuid@_",
+          "location": {
+            "file": "libuuid@_/MODULE.bazel",
             "line": 10,
             "column": 21
           },

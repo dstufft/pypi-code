@@ -49,7 +49,7 @@ rm $$INSTALLDIR$$/lib/libpython*.a
 """,
     deps = [
         "@libffi",
-        # "@util-linux",
+        "@libuuid",
         "@xz",
         "@zlib",
     ],

@@ -12,6 +12,7 @@ bazel_dep(name = "rules_python", version = "0.23.1")
 bazel_dep(name = "zlib", version = "1.2.13.1")
 bazel_dep(name = "xz", version = "5.4.3")
 bazel_dep(name = "libffi", version = "3.4.4")
+bazel_dep(name = "libuuid", version = "2.39")
 
 # Upstream Dependencies
 deps = use_extension("@python//:deps.bzl", "deps")

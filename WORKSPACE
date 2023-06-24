@@ -23,11 +23,8 @@ register_toolchains(
 )
 
 load("//rules/zip:repositories.bzl", zip_repositories = "repositories")
-load("//:third_party/util-linux/repositories.bzl", util_linux_repositories = "repositories")
 
 zip_repositories()
-
-util_linux_repositories()
 
 load("//rules/zip:toolchains.bzl", zip_toolchains = "toolchains")
 
