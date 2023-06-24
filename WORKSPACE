@@ -30,12 +30,9 @@ http_archive(
 )
 
 load("//rules/zip:repositories.bzl", zip_repositories = "repositories")
-load("//:third_party/libffi/repositories.bzl", libffi_repositories = "repositories")
 load("//:third_party/util-linux/repositories.bzl", util_linux_repositories = "repositories")
 
 zip_repositories()
-
-libffi_repositories()
 
 util_linux_repositories()
 

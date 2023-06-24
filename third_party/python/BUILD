@@ -48,7 +48,7 @@ mv $$INSTALLDIR$$/bin/python3 $$INSTALLDIR$$/bin/python3.orig
 rm $$INSTALLDIR$$/lib/libpython*.a
 """,
     deps = [
-        # "@libffi",
+        "@libffi",
         # "@util-linux",
         "@xz",
         "@zlib",

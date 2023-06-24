@@ -1,13 +1,5 @@
 load("@rules_foreign_cc//foreign_cc:defs.bzl", "configure_make")
 
-filegroup(
-    name = "srcs",
-    srcs = glob(
-        include = ["**"],
-        exclude = ["*.bazel"],
-    ),
-)
-
 configure_make(
     name = "libffi",
     configure_in_place = True,
@@ -15,7 +7,7 @@ configure_make(
         # We don't need the documentation
         "--disable-docs",
     ],
-    lib_source = ":srcs",
+    lib_source = "@upstream//:srcs",
     out_shared_libs = select({
         # "@platforms//os:windows": ["zlib.dll"],
         # "@platforms//os:osx": ["zlib.dylib"],
