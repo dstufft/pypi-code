@@ -13,7 +13,7 @@
     "compatibilityMode": "ERROR"
   },
   "localOverrideHashes": {
-    "python": "2d285b06b20fd7685d77b5cf0692b12c04af067e9b5d8eb9dede437b1bf73192",
+    "python": "c34dadeb7adbe70595501394bb1b6d66f6bbde8a86d0421f680f12b492d26f6e",
     "xz": "924224c84c9fa36d9f323ba96e5024fbb6cf4c1e6449468899b92871ed2dc72c",
     "libffi": "9ab26cb2bba232000eb4cee81ecf5359ba6a78cb70b560840962a44aa7a47728",
     "bazel_tools": "11c49407fdc54b48d69dcd4478440118124b9cd51b2dca5947a6414a585964a1",
@@ -203,7 +203,7 @@
           "usingModule": "python@_",
           "location": {
             "file": "python@_/MODULE.bazel",
-            "line": 18,
+            "line": 19,
             "column": 21
           },
           "imports": {
@@ -222,7 +222,8 @@
         "zlib": "zlib@1.2.13.1",
         "xz": "xz@_",
         "libffi": "libffi@_",
-        "libuuid": "libuuid@_"
+        "libuuid": "libuuid@_",
+        "bzip2": "bzip2@1.0.8"
       }
     },
     "rules_cc@0.0.2": {
@@ -751,6 +752,24 @@
         "bazel_tools": "bazel_tools@_",
         "local_config_platform": "local_config_platform@_",
         "rules_foreign_cc": "rules_foreign_cc@_"
+      }
+    },
+    "bzip2@1.0.8": {
+      "name": "bzip2",
+      "version": "1.0.8",
+      "key": "bzip2@1.0.8",
+      "repoName": "bzip2",
+      "executionPlatformsToRegister": [],
+      "toolchainsToRegister": [],
+      "extensionUsages": [],
+      "deps": {
+        "bazel_tools": "bazel_tools@_",
+        "local_config_platform": "local_config_platform@_"
+      },
+      "repoSpec": {
+        "bzlFile": "@bazel_tools//tools/build_defs/repo:http.bzl",
+        "ruleClassName": "http_archive",
+        "attributes": {"name":"--bzip2~1.0.8","urls":["--https://sourceware.org/pub/bzip2/bzip2-1.0.8.tar.gz"],"integrity":"--sha256-q1oDF27hBtPw+pDjgdpHjdrkBZGBU8yiSOaCzQxKImk=","strip_prefix":"--bzip2-1.0.8","remote_patches":{"--https://bcr.bazel.build/modules/bzip2/1.0.8/patches/add_build_file.patch":"--sha256-xJNk2k+qB6WjPQYB00KeIXmH/9k3asL6en5schN9hMI=","--https://bcr.bazel.build/modules/bzip2/1.0.8/patches/module_dot_bazel.patch":"--sha256-0L0dzTSwiKpuEZAqbpUf+x+WOXt0qyCX8lBR+bRZ7so="},"remote_patch_strip":0}
       }
     },
     "bazel_skylib@1.4.1": {

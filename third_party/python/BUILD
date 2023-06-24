@@ -48,6 +48,7 @@ mv $$INSTALLDIR$$/bin/python3 $$INSTALLDIR$$/bin/python3.orig
 rm $$INSTALLDIR$$/lib/libpython*.a
 """,
     deps = [
+        "@bzip2//:bz2",
         "@libffi",
         "@libuuid",
         "@xz",
