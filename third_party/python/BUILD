@@ -7,12 +7,6 @@ config_setting(
     values = {"compilation_mode": "opt"},
 )
 
-# TODO: LTO?
-# TODO: MSAN?
-# TODO: UBSAN?
-# TODO: --pydebug?
-# TODO: OpenSSL?
-
 configure_make(
     name = "python",
     configure_in_place = True,
@@ -30,9 +24,6 @@ configure_make(
         ":optimized": ["--enable-optimizations"],
         "//conditions:default": [],
     }),
-    # env = {
-    #     "LDFLAGS_NODIST": "-Wl,-rpath,'\\$$\\$$ORIGIN/../lib/'",
-    # },
     # rules_foreign_cc defaults the install_prefix to "python". This conflicts
     # with the "python" executable that is generated.
     install_prefix = "bazel",
@@ -80,6 +71,8 @@ genrule(
 output_files(
     name = "files",
     paths = [
+        # TODO: This is gross, we should either just remove this and deal with
+        #       the extra paths, or fix this somehow.
         "../python~override/python/lib",
         "../python~override/python/include",
     ],
