@@ -22,7 +22,7 @@ configure_make(
         # 	programs are useful in this configuration, e.g., tset and tput versus
         # 	infocmp and tic.
         "--disable-database",
-        "--with-fallbacks=linux,vt100,xterm",
+        "--with-fallbacks=linux,vt100,xterm,xterm-256color",
         # 	The $HOME/.terminfo directory is normally added to ncurses' search
         # 	list for reading/writing terminfo entries, since that directory is
         # 	more likely writable than the system terminfo database.  Use this
