@@ -13,7 +13,7 @@
     "compatibilityMode": "ERROR"
   },
   "localOverrideHashes": {
-    "python": "22dd69ae7d19ed8552ed82204acec86f58f7f35448f6c4553f60200a4af28625",
+    "python": "7c93fdd1c94f3c38a14e76761a49b14baa47a7fd02ce6b5865e1ad55b63853dd",
     "xz": "924224c84c9fa36d9f323ba96e5024fbb6cf4c1e6449468899b92871ed2dc72c",
     "libffi": "9ab26cb2bba232000eb4cee81ecf5359ba6a78cb70b560840962a44aa7a47728",
     "bazel_tools": "11c49407fdc54b48d69dcd4478440118124b9cd51b2dca5947a6414a585964a1",
@@ -205,7 +205,7 @@
           "usingModule": "python@_",
           "location": {
             "file": "python@_/MODULE.bazel",
-            "line": 21,
+            "line": 22,
             "column": 21
           },
           "imports": {
@@ -227,7 +227,8 @@
         "libedit": "libedit@_",
         "libffi": "libffi@_",
         "libuuid": "libuuid@_",
-        "bzip2": "bzip2@1.0.8"
+        "bzip2": "bzip2@1.0.8",
+        "sqlite3": "sqlite3@3.42.0.bcr.1"
       }
     },
     "rules_cc@0.0.2": {
@@ -835,6 +836,25 @@
         "bzlFile": "@bazel_tools//tools/build_defs/repo:http.bzl",
         "ruleClassName": "http_archive",
         "attributes": {"name":"--bzip2~1.0.8","urls":["--https://sourceware.org/pub/bzip2/bzip2-1.0.8.tar.gz"],"integrity":"--sha256-q1oDF27hBtPw+pDjgdpHjdrkBZGBU8yiSOaCzQxKImk=","strip_prefix":"--bzip2-1.0.8","remote_patches":{"--https://bcr.bazel.build/modules/bzip2/1.0.8/patches/add_build_file.patch":"--sha256-xJNk2k+qB6WjPQYB00KeIXmH/9k3asL6en5schN9hMI=","--https://bcr.bazel.build/modules/bzip2/1.0.8/patches/module_dot_bazel.patch":"--sha256-0L0dzTSwiKpuEZAqbpUf+x+WOXt0qyCX8lBR+bRZ7so="},"remote_patch_strip":0}
+      }
+    },
+    "sqlite3@3.42.0.bcr.1": {
+      "name": "sqlite3",
+      "version": "3.42.0.bcr.1",
+      "key": "sqlite3@3.42.0.bcr.1",
+      "repoName": "sqlite3",
+      "executionPlatformsToRegister": [],
+      "toolchainsToRegister": [],
+      "extensionUsages": [],
+      "deps": {
+        "bazel_tools": "bazel_tools@_",
+        "local_config_platform": "local_config_platform@_",
+        "platforms": "platforms@0.0.6"
+      },
+      "repoSpec": {
+        "bzlFile": "@bazel_tools//tools/build_defs/repo:http.bzl",
+        "ruleClassName": "http_archive",
+        "attributes": {"name":"--sqlite3~3.42.0.bcr.1","urls":["--https://sqlite.org/2023/sqlite-amalgamation-3420000.zip"],"integrity":"--sha256-HMgk0PXmdYKfo3AYMY/agz6lb36d4rQe3dn3ZDtewp4=","strip_prefix":"--sqlite-amalgamation-3420000","remote_patches":{"--https://bcr.bazel.build/modules/sqlite3/3.42.0.bcr.1/patches/add_build_file.patch":"--sha256-jv2puH58Mvf5zg3l26JdJHsAHBjb743lE3uV0FvSAd8=","--https://bcr.bazel.build/modules/sqlite3/3.42.0.bcr.1/patches/module_dot_bazel.patch":"--sha256-0nVrZCj8DjLNzeeLpBtVT9X0s4BQXqANYyu++q7Ikv8="},"remote_patch_strip":0}
       }
     },
     "bazel_skylib@1.4.1": {

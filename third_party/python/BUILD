@@ -55,6 +55,7 @@ rm $$INSTALLDIR$$/lib/libpython*.a
         "@libffi",
         "@libuuid",
         "@ncurses",
+        "@sqlite3",
         "@xz",
         "@zlib",
     ],
