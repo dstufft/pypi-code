@@ -13,7 +13,7 @@
     "compatibilityMode": "ERROR"
   },
   "localOverrideHashes": {
-    "python": "93e405a01d74e4e21231cabd9f232b4ecae6c2481b580ec9966113f9cdc47a81",
+    "python": "22dd69ae7d19ed8552ed82204acec86f58f7f35448f6c4553f60200a4af28625",
     "xz": "924224c84c9fa36d9f323ba96e5024fbb6cf4c1e6449468899b92871ed2dc72c",
     "libffi": "9ab26cb2bba232000eb4cee81ecf5359ba6a78cb70b560840962a44aa7a47728",
     "bazel_tools": "11c49407fdc54b48d69dcd4478440118124b9cd51b2dca5947a6414a585964a1",
@@ -205,7 +205,7 @@
           "usingModule": "python@_",
           "location": {
             "file": "python@_/MODULE.bazel",
-            "line": 23,
+            "line": 21,
             "column": 21
           },
           "imports": {

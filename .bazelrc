@@ -36,7 +36,7 @@ common --incompatible_allow_tags_propagation
 
 # Don't make the user wait for uploads, instead allow the bazel command to
 # complete and exit.
-#--bes_upload_mode=fully_async
+build --bes_upload_mode=fully_async
 
 # Tell bazel not to try and detect the C/C++ toolchain from the host, instead it
 # will do nothing by default, which will allow us to register our own, hermetic
