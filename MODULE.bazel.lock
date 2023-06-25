@@ -1,6 +1,6 @@
 {
   "lockFileVersion": 1,
-  "moduleFileHash": "8298ea1ab2c16a56acb04ff5dd0de36b377ed8236fbc1869a1b62b6f22c9b929",
+  "moduleFileHash": "6d32a809f0ead89fc46eccc5c5f5e4619eca7658654d6205f752c447086491d7",
   "flags": {
     "cmdRegistries": [
       "https://bcr.bazel.build/"
@@ -29,13 +29,36 @@
       "repoName": "pypi",
       "executionPlatformsToRegister": [],
       "toolchainsToRegister": [
+        "@zig_sdk//toolchain:linux_amd64_gnu.2.28",
+        "@zig_sdk//toolchain:linux_arm64_gnu.2.28",
+        "@zig_sdk//toolchain:darwin_amd64",
+        "@zig_sdk//toolchain:darwin_arm64",
+        "@zig_sdk//toolchain:windows_amd64",
+        "@zig_sdk//toolchain:windows_arm64",
         "@python//:toolchain"
       ],
-      "extensionUsages": [],
+      "extensionUsages": [
+        {
+          "extensionBzlFile": "@hermetic_cc_toolchain//toolchain:ext.bzl",
+          "extensionName": "toolchains",
+          "usingModule": "\u003croot\u003e",
+          "location": {
+            "file": "\u003croot\u003e/MODULE.bazel",
+            "line": 11,
+            "column": 27
+          },
+          "imports": {
+            "zig_sdk": "zig_sdk"
+          },
+          "devImports": [],
+          "tags": []
+        }
+      ],
       "deps": {
         "bazel_tools": "bazel_tools@_",
         "local_config_platform": "local_config_platform@_",
         "platforms": "platforms@0.0.6",
+        "hermetic_cc_toolchain": "hermetic_cc_toolchain@_",
         "python": "python@_"
       }
     },
@@ -189,6 +212,20 @@
         "bzlFile": "@bazel_tools//tools/build_defs/repo:http.bzl",
         "ruleClassName": "http_archive",
         "attributes": {"name":"--platforms~0.0.6","urls":["--https://github.com/bazelbuild/platforms/releases/download/0.0.6/platforms-0.0.6.tar.gz"],"integrity":"--sha256-Uwj8HYhlQGpJQnuiSpq1MIfxf1Jmp6q7/CiCPzkW4co=","strip_prefix":"--","remote_patches":{"--https://bcr.bazel.build/modules/platforms/0.0.6/patches/module_dot_bazel.patch":"--sha256-/ITFV+xsibQyr8dnuvUILvdoOigF6XuiyZHN+Gf7UM8="},"remote_patch_strip":0}
+      }
+    },
+    "hermetic_cc_toolchain@_": {
+      "name": "hermetic_cc_toolchain",
+      "version": "2.0.0.dev",
+      "key": "hermetic_cc_toolchain@_",
+      "repoName": "hermetic_cc_toolchain",
+      "executionPlatformsToRegister": [],
+      "toolchainsToRegister": [],
+      "extensionUsages": [],
+      "deps": {
+        "bazel_tools": "bazel_tools@_",
+        "local_config_platform": "local_config_platform@_",
+        "platforms": "platforms@0.0.6"
       }
     },
     "python@_": {
