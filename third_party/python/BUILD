@@ -21,7 +21,10 @@ configure_make(
         # TODO: Bring our own pip?
         "--with-ensurepip=install",
     ] + select({
-        ":optimized": ["--enable-optimizations"],
+        ":optimized": [
+            "--enable-optimizations",
+            "--with-lto",
+        ],
         "//conditions:default": [],
     }),
     # rules_foreign_cc defaults the install_prefix to "python". This conflicts
