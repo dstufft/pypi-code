@@ -24,6 +24,7 @@ register_toolchains("@python//:toolchain")
 
 # Local Overrides for Dependencies
 local_path_override(module_name = "python", path = "third_party/python")
+local_path_override(module_name = "openssl", path = "third_party/openssl")
 local_path_override(module_name = "ncurses", path = "third_party/ncurses")
 local_path_override(module_name = "libedit", path = "third_party/libedit")
 local_path_override(module_name = "libuuid", path = "third_party/libuuid")

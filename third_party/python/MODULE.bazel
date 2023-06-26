@@ -17,6 +17,7 @@ bazel_dep(name = "libffi", version = "3.4.4")
 bazel_dep(name = "libuuid", version = "2.39")
 bazel_dep(name = "bzip2", version = "1.0.8")
 bazel_dep(name = "sqlite3", version = "3.42.0.bcr.1")
+bazel_dep(name = "openssl", version = "3.1.1")
 
 # Upstream Dependencies
 deps = use_extension("@python//:deps.bzl", "deps")
