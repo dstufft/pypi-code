@@ -31,11 +31,6 @@ local_path_override(module_name = "libuuid", path = "third_party/libuuid")
 local_path_override(module_name = "libffi", path = "third_party/libffi")
 local_path_override(module_name = "xz", path = "third_party/xz")
 
-single_version_override(
-    module_name = "zlib",
-    registry = "https://raw.githubusercontent.com/dstufft/bazel-central-registry/ccd7c0a/",
-)
-
 archive_override(
     module_name = "rules_foreign_cc",
     urls = [

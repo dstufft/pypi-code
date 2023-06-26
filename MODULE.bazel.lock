@@ -1,6 +1,6 @@
 {
   "lockFileVersion": 1,
-  "moduleFileHash": "48d48966dd0280f794511aabbdc7c8116b8740adc6f287dd11ecbc36eae3454d",
+  "moduleFileHash": "591e4afbff52944ecda3862421ac7a3504e50e19058b0ee5230f53660cd8d5e5",
   "flags": {
     "cmdRegistries": [
       "https://bcr.bazel.build/"
@@ -600,7 +600,7 @@
       "repoSpec": {
         "bzlFile": "@bazel_tools//tools/build_defs/repo:http.bzl",
         "ruleClassName": "http_archive",
-        "attributes": {"name":"--zlib~1.2.13.bcr.1","urls":["--https://github.com/madler/zlib/archive/refs/tags/v1.2.13.zip"],"integrity":"--sha256-woVpUbvzDjCGGs43ZVldhroT8s8BJ52QH2xiJYxX9P8=","strip_prefix":"--zlib-1.2.13","remote_patches":{"--https://raw.githubusercontent.com/dstufft/bazel-central-registry/ccd7c0a/modules/zlib/1.2.13.bcr.1/patches/add_build_file.patch":"--sha256-8ZN/l6dJF8rhOLfD6iw5Vq/O90qUsaZf9lQquVEj+rc=","--https://raw.githubusercontent.com/dstufft/bazel-central-registry/ccd7c0a/modules/zlib/1.2.13.bcr.1/patches/module_dot_bazel.patch":"--sha256-1dhoQ1tCPGXa9ZM8KM08AoB+NMEUxXsgACLsUpNFYTg="},"remote_patch_strip":0}
+        "attributes": {"name":"--zlib~1.2.13.bcr.1","urls":["--https://github.com/madler/zlib/archive/refs/tags/v1.2.13.zip"],"integrity":"--sha256-woVpUbvzDjCGGs43ZVldhroT8s8BJ52QH2xiJYxX9P8=","strip_prefix":"--zlib-1.2.13","remote_patches":{"--https://bcr.bazel.build/modules/zlib/1.2.13.bcr.1/patches/add_build_file.patch":"--sha256-8ZN/l6dJF8rhOLfD6iw5Vq/O90qUsaZf9lQquVEj+rc=","--https://bcr.bazel.build/modules/zlib/1.2.13.bcr.1/patches/module_dot_bazel.patch":"--sha256-1dhoQ1tCPGXa9ZM8KM08AoB+NMEUxXsgACLsUpNFYTg="},"remote_patch_strip":0}
       }
     },
     "aspect_bazel_lib@1.32.1": {
