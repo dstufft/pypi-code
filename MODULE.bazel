@@ -33,7 +33,7 @@ local_path_override(module_name = "xz", path = "third_party/xz")
 
 single_version_override(
     module_name = "zlib",
-    registry = "https://raw.githubusercontent.com/dstufft/bazel-central-registry/7932ae9/",
+    registry = "https://raw.githubusercontent.com/dstufft/bazel-central-registry/ccd7c0a/",
 )
 
 archive_override(
