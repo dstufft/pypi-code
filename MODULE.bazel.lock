@@ -1,6 +1,6 @@
 {
   "lockFileVersion": 1,
-  "moduleFileHash": "591e4afbff52944ecda3862421ac7a3504e50e19058b0ee5230f53660cd8d5e5",
+  "moduleFileHash": "40861bc9eaa63d218eb9e6466babf099a4876724fb6d9444c5bad612772875e4",
   "flags": {
     "cmdRegistries": [
       "https://bcr.bazel.build/"
@@ -17,7 +17,7 @@
     "xz": "924224c84c9fa36d9f323ba96e5024fbb6cf4c1e6449468899b92871ed2dc72c",
     "libffi": "9ab26cb2bba232000eb4cee81ecf5359ba6a78cb70b560840962a44aa7a47728",
     "bazel_tools": "11c49407fdc54b48d69dcd4478440118124b9cd51b2dca5947a6414a585964a1",
-    "openssl": "222c03373f64b3a53d9959c603f3164e9d428c9d131d4644ddb719e90e86c3d3",
+    "openssl": "879bd3c09793d573e4cf073cef0a2ada19b8c3a91b8dcfd99e20c0d5cb80eca8",
     "libuuid": "2f0f5257df1ba188ea7e72807be27803c2748ff91584eacabe0cfdaac82dae9e",
     "ncurses": "ad3649a162837e0f91bd45ce3a4e2fd5f4fd27932b7c2d65a55f6196a18ac1ed",
     "libedit": "0a5e1acd8875881c1bf95d58f28a28743b8f6a4563193c3548aff37a27f984a3"
@@ -299,7 +299,7 @@
       "deps": {
         "bazel_tools": "bazel_tools@_",
         "local_config_platform": "local_config_platform@_",
-        "bazel_skylib": "bazel_skylib@1.4.1",
+        "bazel_skylib": "bazel_skylib@1.4.2",
         "platforms": "platforms@0.0.6"
       },
       "repoSpec": {
@@ -375,7 +375,7 @@
         "local_config_platform": "local_config_platform@_",
         "platforms": "platforms@0.0.6",
         "rules_cc": "rules_cc@0.0.2",
-        "bazel_skylib": "bazel_skylib@1.4.1",
+        "bazel_skylib": "bazel_skylib@1.4.2",
         "rules_proto": "rules_proto@5.3.0-21.7"
       },
       "repoSpec": {
@@ -413,7 +413,7 @@
       "deps": {
         "bazel_tools": "bazel_tools@_",
         "local_config_platform": "local_config_platform@_",
-        "bazel_skylib": "bazel_skylib@1.4.1",
+        "bazel_skylib": "bazel_skylib@1.4.2",
         "com_google_protobuf": "protobuf@21.7",
         "rules_cc": "rules_cc@0.0.2"
       },
@@ -519,7 +519,7 @@
         "bazel_tools": "bazel_tools@_",
         "local_config_platform": "local_config_platform@_",
         "platforms": "platforms@0.0.6",
-        "bazel_skylib": "bazel_skylib@1.4.1",
+        "bazel_skylib": "bazel_skylib@1.4.2",
         "rules_proto": "rules_proto@5.3.0-21.7",
         "com_google_protobuf": "protobuf@21.7"
       },
@@ -567,7 +567,7 @@
       "deps": {
         "bazel_tools": "bazel_tools@_",
         "local_config_platform": "local_config_platform@_",
-        "bazel_skylib": "bazel_skylib@1.4.1",
+        "bazel_skylib": "bazel_skylib@1.4.2",
         "rules_python": "rules_python@0.23.1",
         "rules_cc": "rules_cc@0.0.2",
         "rules_proto": "rules_proto@5.3.0-21.7",
@@ -642,7 +642,7 @@
       "deps": {
         "bazel_tools": "bazel_tools@_",
         "local_config_platform": "local_config_platform@_",
-        "bazel_skylib": "bazel_skylib@1.4.1",
+        "bazel_skylib": "bazel_skylib@1.4.2",
         "platforms": "platforms@0.0.6",
         "io_bazel_stardoc": "stardoc@0.5.4"
       },
@@ -703,7 +703,7 @@
       "deps": {
         "bazel_tools": "bazel_tools@_",
         "local_config_platform": "local_config_platform@_",
-        "bazel_skylib": "bazel_skylib@1.4.1",
+        "bazel_skylib": "bazel_skylib@1.4.2",
         "platforms": "platforms@0.0.6",
         "rules_python": "rules_python@0.23.1"
       }
@@ -910,7 +910,7 @@
           "usingModule": "openssl@_",
           "location": {
             "file": "openssl@_/MODULE.bazel",
-            "line": 10,
+            "line": 11,
             "column": 21
           },
           "imports": {
@@ -923,13 +923,14 @@
       "deps": {
         "bazel_tools": "bazel_tools@_",
         "local_config_platform": "local_config_platform@_",
-        "rules_foreign_cc": "rules_foreign_cc@_"
+        "rules_foreign_cc": "rules_foreign_cc@_",
+        "rules_perl": "rules_perl@_"
       }
     },
-    "bazel_skylib@1.4.1": {
+    "bazel_skylib@1.4.2": {
       "name": "bazel_skylib",
-      "version": "1.4.1",
-      "key": "bazel_skylib@1.4.1",
+      "version": "1.4.2",
+      "key": "bazel_skylib@1.4.2",
       "repoName": "bazel_skylib",
       "executionPlatformsToRegister": [],
       "toolchainsToRegister": [
@@ -945,7 +946,7 @@
       "repoSpec": {
         "bzlFile": "@bazel_tools//tools/build_defs/repo:http.bzl",
         "ruleClassName": "http_archive",
-        "attributes": {"name":"--bazel_skylib~1.4.1","urls":["--https://github.com/bazelbuild/bazel-skylib/releases/download/1.4.1/bazel-skylib-1.4.1.tar.gz"],"integrity":"--sha256-uKFSeQF3QYCvx5iusoxGNL3M8ZxNmOe90c550f6aqtc=","strip_prefix":"--","remote_patches":{},"remote_patch_strip":0}
+        "attributes": {"name":"--bazel_skylib~1.4.2","urls":["--https://github.com/bazelbuild/bazel-skylib/releases/download/1.4.2/bazel-skylib-1.4.2.tar.gz"],"integrity":"--sha256-Zv/ZMVZlv6r8lrUiePV8fi3Qn17eJ56m05sr5HHn46o=","strip_prefix":"--","remote_patches":{},"remote_patch_strip":0}
       }
     },
     "rules_pkg@0.7.0": {
@@ -960,7 +961,7 @@
         "bazel_tools": "bazel_tools@_",
         "local_config_platform": "local_config_platform@_",
         "rules_python": "rules_python@0.23.1",
-        "bazel_skylib": "bazel_skylib@1.4.1",
+        "bazel_skylib": "bazel_skylib@1.4.2",
         "rules_license": "rules_license@0.0.3"
       },
       "repoSpec": {
@@ -1000,7 +1001,7 @@
       "deps": {
         "bazel_tools": "bazel_tools@_",
         "local_config_platform": "local_config_platform@_",
-        "bazel_skylib": "bazel_skylib@1.4.1",
+        "bazel_skylib": "bazel_skylib@1.4.2",
         "rules_proto": "rules_proto@5.3.0-21.7",
         "com_google_protobuf": "protobuf@21.7",
         "com_google_absl": "abseil-cpp@20211102.0",
@@ -1065,7 +1066,7 @@
       "deps": {
         "bazel_tools": "bazel_tools@_",
         "local_config_platform": "local_config_platform@_",
-        "bazel_skylib": "bazel_skylib@1.4.1",
+        "bazel_skylib": "bazel_skylib@1.4.2",
         "io_bazel_stardoc": "stardoc@0.5.4"
       },
       "repoSpec": {
@@ -1106,7 +1107,7 @@
       "deps": {
         "bazel_tools": "bazel_tools@_",
         "local_config_platform": "local_config_platform@_",
-        "bazel_skylib": "bazel_skylib@1.4.1",
+        "bazel_skylib": "bazel_skylib@1.4.2",
         "rules_java": "rules_java@5.5.0",
         "rules_license": "rules_license@0.0.3"
       },
@@ -1114,6 +1115,47 @@
         "bzlFile": "@bazel_tools//tools/build_defs/repo:http.bzl",
         "ruleClassName": "http_archive",
         "attributes": {"name":"--stardoc~0.5.4","urls":["--https://github.com/bazelbuild/stardoc/releases/download/0.5.4/stardoc-0.5.4.tar.gz"],"integrity":"--sha256-7FcTnkZvquVj8vw5YJ2klIpHm7UbbWeu3X2bG4BZxDM=","strip_prefix":"--","remote_patches":{},"remote_patch_strip":0}
+      }
+    },
+    "rules_perl@_": {
+      "name": "rules_perl",
+      "version": "0.1.0",
+      "key": "rules_perl@_",
+      "repoName": "rules_perl",
+      "executionPlatformsToRegister": [],
+      "toolchainsToRegister": [
+        "@rules_perl//:perl_darwin_arm64_toolchain",
+        "@rules_perl//:perl_darwin_amd64_toolchain",
+        "@rules_perl//:perl_linux_amd64_toolchain",
+        "@rules_perl//:perl_linux_arm64_toolchain",
+        "@rules_perl//:perl_windows_x86_64_toolchain"
+      ],
+      "extensionUsages": [
+        {
+          "extensionBzlFile": "@rules_perl//perl:extensions.bzl",
+          "extensionName": "perl_repositories",
+          "usingModule": "rules_perl@_",
+          "location": {
+            "file": "rules_perl@_/MODULE.bazel",
+            "line": 10,
+            "column": 22
+          },
+          "imports": {
+            "perl_darwin_arm64": "perl_darwin_arm64",
+            "perl_darwin_amd64": "perl_darwin_amd64",
+            "perl_linux_amd64": "perl_linux_amd64",
+            "perl_linux_arm64": "perl_linux_arm64",
+            "perl_windows_x86_64": "perl_windows_x86_64"
+          },
+          "devImports": [],
+          "tags": []
+        }
+      ],
+      "deps": {
+        "bazel_tools": "bazel_tools@_",
+        "local_config_platform": "local_config_platform@_",
+        "platforms": "platforms@0.0.6",
+        "bazel_skylib": "bazel_skylib@1.4.2"
       }
     }
   }
