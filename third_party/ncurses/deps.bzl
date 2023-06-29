@@ -17,6 +17,18 @@ filegroup(
     ),
 )
         """,
+        patch_args = ["-p1"],
+        patches = [
+            # The Configure script doesn't handle tilde in paths, which we are
+            # using via bzlmode.
+            "//:patches/tilde-paths.patch",
+            # The configure script passes -stats and -lc to the linker, which
+            # our linker doesn't support and we don't need.
+            "//:patches/zig-ld.patch",
+            # The configure hardcodes ar flags that are acceptable, but we want
+            # to allow others.
+            "//:patches/arflags.patch",
+        ],
         sha256 = "a993af1aaee3b6ac72d03b6815dd3f60d291c4a585a0c2db92fcdc02b2dc7893",
         strip_prefix = "ncurses-6.4-20230617",
         urls = [

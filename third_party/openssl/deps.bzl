@@ -17,6 +17,12 @@ filegroup(
     ),
 )
         """,
+        patch_args = ["-p1"],
+        patches = [
+            # The Configure script for perl assumes /usr/bin/env perl, but we
+            # need to provide it using $PERL.
+            "//:patches/perl.patch",
+        ],
         sha256 = "b3aa61334233b852b63ddb048df181177c2c659eb9d4376008118f9c08d07674",
         strip_prefix = "openssl-3.1.1",
         urls = [

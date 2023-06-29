@@ -13,17 +13,10 @@ configure_make(
         "--disable-scripts",
         # We don't need the documentation
         "--disable-doc",
+        # We don't need or want the shared library.
+        "--disable-shared",
     ],
     lib_name = "liblzma",
     lib_source = "@upstream//:srcs",
-    out_shared_libs = select({
-        # "@platforms//os:windows": ["zlib.dll"],
-        # "@platforms//os:osx": ["zlib.dylib"],
-        "//conditions:default": [
-            "liblzma.so",
-            "liblzma.so.5",
-            "liblzma.so.5.4.3",
-        ],
-    }),
     visibility = ["//visibility:public"],
 )

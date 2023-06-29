@@ -2,7 +2,8 @@ load("@rules_foreign_cc//foreign_cc:defs.bzl", "configure_make")
 
 configure_make(
     name = "openssl",
-    configure_command = "Configure",
+    configure_command = "config",
+    configure_in_place = True,
     configure_options = [
         "--libdir=lib",
         "no-autoload-config",
@@ -21,22 +22,12 @@ configure_make(
         "no-ssl3-method",
         "no-capieng",
         "no-rdrand",
+        "no-shared",
     ],
+    env = {
+        "PERL": "$$EXT_BUILD_ROOT$$/$(PERL)",
+    },
     lib_source = "@upstream//:srcs",
-    # Note that for Linux builds, libssl must come before libcrypto on the linker command-line.
-    # As such, libssl must be listed before libcrypto
-    out_shared_libs = select({
-        # "@platforms//os:macos": [
-        #     "libssl.1.1.dylib",
-        #     "libcrypto.1.1.dylib",
-        # ],
-        "//conditions:default": [
-            "libssl.so",
-            "libssl.so.3",
-            "libcrypto.so",
-            "libcrypto.so.3",
-        ],
-    }),
     out_static_libs = [
         "libssl.a",
         "libcrypto.a",
@@ -47,5 +38,6 @@ configure_make(
         "install_sw",
         "install_ssldirs",
     ],
+    toolchains = ["@rules_perl//:current_toolchain"],
     visibility = ["//visibility:public"],
 )

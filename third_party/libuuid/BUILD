@@ -9,16 +9,9 @@ configure_make(
         "--disable-all-programs",
         # Turn on the things we actually want
         "--enable-libuuid",
+        # We don't need or want the shared library.
+        "--disable-shared",
     ],
     lib_source = "@upstream//:srcs",
-    out_shared_libs = select({
-        # "@platforms//os:windows": ["zlib.dll"],
-        # "@platforms//os:osx": ["zlib.dylib"],
-        "//conditions:default": [
-            "libuuid.so",
-            "libuuid.so.1",
-            "libuuid.so.1.3.0",
-        ],
-    }),
     visibility = ["//visibility:public"],
 )

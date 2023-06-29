@@ -1,0 +1,13 @@
+diff --git a/configure b/configure
+index 4c39d24f..dcef09f7 100755
+--- a/configure
++++ b/configure
+@@ -5125,7 +5125,7 @@
+ 		;;
+ 	(*)
+ 		cf_cv_ar_flags=unknown
+-		for cf_ar_flags in -curvU -curv curv -crv crv -cqv cqv -rv rv
++		for cf_ar_flags in -curvU -curv curv -crv crv -cqv cqv -rv rv rcsD
+ 		do
+ 
+ 			# check if $ARFLAGS already contains this choice

@@ -5,13 +5,10 @@ configure_make(
     configure_in_place = True,
     configure_options = [
         "--disable-docs",
+        # We don't need or want the shared library.
+        "--disable-shared",
     ],
     lib_source = "@upstream//:srcs",
-    out_shared_libs = select({
-        # "@platforms//os:windows": ["zlib.dll"],
-        # "@platforms//os:osx": ["zlib.dylib"],
-        "//conditions:default": ["libedit.so"],
-    }),
     visibility = ["//visibility:public"],
     deps = ["@ncurses"],
 )

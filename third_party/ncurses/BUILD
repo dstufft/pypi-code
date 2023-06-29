@@ -11,8 +11,6 @@ configure_make(
         "--without-tack",
         "--without-tests",
         "--without-ada",
-        # Build shared libraries as well
-        "--with-shared",
         # Enable wide characters (e.g. UTF-8)
         "--enable-widec",
         # 	Use only built-in data.  The ncurses libraries normally read terminfo
@@ -50,14 +48,7 @@ configure_make(
         "--disable-termcap",
         "--enable-overwrite",
     ],
-    # This is a hack to fix a bug in the configure script.
-    configure_prefix = "unset MAKE && ",
     lib_name = "libncurses",
     lib_source = "@upstream//:srcs",
-    out_shared_libs = select({
-        # "@platforms//os:windows": ["zlib.dll"],
-        # "@platforms//os:osx": ["zlib.dylib"],
-        "//conditions:default": ["libncurses.so"],
-    }),
     visibility = ["//visibility:public"],
 )

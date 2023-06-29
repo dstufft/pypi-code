@@ -1,0 +1,40 @@
+diff --git a/configure b/configure
+index 4c39d24f..dcef09f7 100755
+--- a/configure
++++ b/configure
+@@ -6751,7 +6751,7 @@
+ 		cf_cv_shared_soname='`basename $@`'
+ 	fi
+ 
+-		MK_SHARED_LIB='${CC} ${LDFLAGS} ${CFLAGS} -shared -Wl,-soname,'$cf_cv_shared_soname',-stats,-lc -o $@'
++		MK_SHARED_LIB='${CC} ${LDFLAGS} ${CFLAGS} -shared -Wl,-soname,'$cf_cv_shared_soname' -o $@'
+ 		;;
+ 	(hpux[7-8]*)
+ 		# HP-UX 8.07 ld lacks "+b" option used for libdir search-list
+@@ -6813,7 +6813,7 @@
+ 		cf_cv_shared_soname='`basename $@`'
+ 	fi
+ 
+-		MK_SHARED_LIB='${CC} ${LDFLAGS} ${CFLAGS} -shared -Wl,-soname,'$cf_cv_shared_soname',-stats,-lc -o $@'
++		MK_SHARED_LIB='${CC} ${LDFLAGS} ${CFLAGS} -shared -Wl,-soname,'$cf_cv_shared_soname' -o $@'
+ 		;;
+ 	(mingw*msvc*)
+ 		cf_cv_shlib_version=msvcdll
+@@ -6965,7 +6965,7 @@
+ 		cf_cv_shared_soname='`basename $@`'
+ 	fi
+ 
+-		MK_SHARED_LIB='${CC} ${LDFLAGS} ${CFLAGS} -shared -Wl,-Bshareable,-soname,'$cf_cv_shared_soname',-stats,-lc -o $@'
++		MK_SHARED_LIB='${CC} ${LDFLAGS} ${CFLAGS} -shared -Wl,-Bshareable,-soname,'$cf_cv_shared_soname' -o $@'
+ 		;;
+ 	(nskJ*)
+ 		CC_SHARED_OPTS=
+@@ -6995,7 +6995,7 @@
+ 		cf_cv_shared_soname='`basename $@`'
+ 	fi
+ 
+-		MK_SHARED_LIB='${CC} ${LDFLAGS} ${CFLAGS} -shared -Wl,-soname,'$cf_cv_shared_soname',-stats,-lc -o $@'
++		MK_SHARED_LIB='${CC} ${LDFLAGS} ${CFLAGS} -shared -Wl,-soname,'$cf_cv_shared_soname' -o $@'
+ 		;;
+ 	(netbsd*)
+ 		CC_SHARED_OPTS="$CC_SHARED_OPTS -DPIC"

@@ -1,0 +1,13 @@
+diff --git a/configure b/configure
+index 4c39d24f..dcef09f7 100755
+--- a/configure
++++ b/configure
+@@ -4447,7 +4447,7 @@
+ # do this after mixed-case option (tags/TAGS is not as important as tic).
+ echo "$as_me:4448: checking whether ${MAKE-make} sets \${MAKE}" >&5
+ echo $ECHO_N "checking whether ${MAKE-make} sets \${MAKE}... $ECHO_C" >&6
+-set dummy ${MAKE-make}; ac_make=`echo "$2" | sed 'y,./+-,__p_,'`
++set dummy ${MAKE-make}; ac_make=`echo "$2" | sed 'y,./+-~,__p__,'`
+ if eval "test \"\${ac_cv_prog_make_${ac_make}_set+set}\" = set"; then
+   echo $ECHO_N "(cached) $ECHO_C" >&6
+ else
