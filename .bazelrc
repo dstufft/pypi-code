@@ -85,6 +85,12 @@ build --incompatible_default_to_explicit_init_py
 # and tweak the amount of memory allocated to it
 # build --experimental_remote_merkle_tree_cache --experimental_remote_merkle_tree_cache_size=[XX]
 
+# Download the minimal amount of cached objects needed to complete the build.
+# This may result in errors if our cache ever evicts stuff in the middle of a
+# build.
+# NOTE: Breaks bzl run @python//:interpreter
+# build --remote_download_minimal
+
 # If the grpc remote cache connection fails, it will fail the build, add this so
 # it falls back to the local cache.
 build --remote_local_fallback
