@@ -34,10 +34,10 @@ local_path_override(module_name = "xz", path = "third_party/xz")
 archive_override(
     module_name = "rules_foreign_cc",
     urls = [
-        "https://github.com/bazelbuild/rules_foreign_cc/archive/6ecc134b114f6e086537f5f0148d166467042226.tar.gz",
+        "https://github.com/dstufft/rules_foreign_cc/archive/9b11973b878093f19c475355d627955d224babaf.tar.gz",
     ],
-    strip_prefix = "rules_foreign_cc-6ecc134b114f6e086537f5f0148d166467042226",
-    integrity = "sha256-BZ0dHsCBmzFtBet/nw4Hxc+WNuDLsiTURRYvLQaQGR4=",
+    strip_prefix = "rules_foreign_cc-9b11973b878093f19c475355d627955d224babaf",
+    integrity = "sha256-7kBPgvfYmLWJxdLO/Az8f5weSpvEb1xChvPKo5u7XGs=",
 )
 
 archive_override(
