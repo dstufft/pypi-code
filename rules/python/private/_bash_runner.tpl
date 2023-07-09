@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO: Replace with a binary wrapper, not a bash wrapper.
+
 # --- begin runfiles.bash initialization v2 ---
 # Copy-pasted from the Bazel Bash runfiles library v2.
 set -uo pipefail; f=bazel_tools/tools/bash/runfiles/runfiles.bash
