@@ -1,0 +1,7 @@
+third_party/libedit
+third_party/libffi
+third_party/libuuid
+third_party/ncurses
+third_party/openssl
+third_party/python
+third_party/xz
