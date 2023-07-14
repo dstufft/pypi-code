@@ -4,7 +4,7 @@ common --enable_bzlmod
 
 # Error if our bzlmod lockfile doesn't match what we're getting from the registry
 # TODO: Change this to error once we're not regularly updating the modules
-common --lockfile_mode update
+# common --lockfile_mode update
 
 # Change our defaults to build optimized binaries rather than focusing on
 # building fast.
