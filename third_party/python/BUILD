@@ -35,14 +35,14 @@ configure_make(
         "python3.orig",
     ],
     out_data_dirs = ["lib"],
-    out_static_libs = [],
+    out_static_libs = ["libpython3.11.a"],
     # This is a hack, because these rules don't produce Bazel targets that are
     # marked executable, so what we do is we move the produced binary to a new
     # name, then we have a genrule that copies it to the new name.
     postfix_script = """
 mv $$INSTALLDIR$$/bin/python3 $$INSTALLDIR$$/bin/python3.orig
-rm $$INSTALLDIR$$/lib/libpython*.a
 """,
+    visibility = ["//visibility:public"],
     deps = [
         "@bzip2//:bz2",
         "@libedit",
@@ -70,6 +70,7 @@ genrule(
     executable = True,
     local = True,
     output_to_bindir = True,
+    visibility = ["//visibility:public"],
 )
 
 output_files(
@@ -81,6 +82,7 @@ output_files(
         "../python~override/python/include",
     ],
     target = ":python",
+    visibility = ["//visibility:public"],
 )
 
 py_runtime(
