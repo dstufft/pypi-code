@@ -1,0 +1,47 @@
+error: expected one of: `crate`, `dict`, `extends`, `freelist`, `frozen`, `mapping`, `module`, `name`, `sequence`, `subclass`, `text_signature`, `unsendable`, `weakref`, `gc`
+ --> tests/ui/invalid_pyclass_args.rs:3:11
+  |
+3 | #[pyclass(extend=pyo3::types::PyDict)]
+  |           ^^^^^^
+
+error: expected identifier
+ --> tests/ui/invalid_pyclass_args.rs:6:21
+  |
+6 | #[pyclass(extends = "PyDict")]
+  |                     ^^^^^^^^
+
+error: expected string literal
+ --> tests/ui/invalid_pyclass_args.rs:9:18
+  |
+9 | #[pyclass(name = m::MyClass)]
+  |                  ^
+
+error: expected a single identifier in double quotes
+  --> tests/ui/invalid_pyclass_args.rs:12:18
+   |
+12 | #[pyclass(name = "Custom Name")]
+   |                  ^^^^^^^^^^^^^
+
+error: expected string literal
+  --> tests/ui/invalid_pyclass_args.rs:15:18
+   |
+15 | #[pyclass(name = CustomName)]
+   |                  ^^^^^^^^^^
+
+error: expected string literal
+  --> tests/ui/invalid_pyclass_args.rs:18:20
+   |
+18 | #[pyclass(module = my_module)]
+   |                    ^^^^^^^^^
+
+error: expected one of: `crate`, `dict`, `extends`, `freelist`, `frozen`, `mapping`, `module`, `name`, `sequence`, `subclass`, `text_signature`, `unsendable`, `weakref`, `gc`
+  --> tests/ui/invalid_pyclass_args.rs:21:11
+   |
+21 | #[pyclass(weakrev)]
+   |           ^^^^^^^
+
+error: a `#[pyclass]` cannot be both a `mapping` and a `sequence`
+  --> tests/ui/invalid_pyclass_args.rs:25:8
+   |
+25 | struct CannotBeMappingAndSequence {}
+   |        ^^^^^^^^^^^^^^^^^^^^^^^^^^
