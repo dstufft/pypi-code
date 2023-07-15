@@ -1,0 +1,7 @@
+implementation={{implementation}}
+version={{version.major}}.{{version.minor}}
+shared={{shared}}
+abi3=false
+executable={{executable}}
+pointer_width={{pointer_width}}
+suppress_build_script_link_lines=true
